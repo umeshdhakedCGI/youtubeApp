@@ -1,0 +1,60 @@
+
+<!--<p>show-video works!</p>-->
+
+<div style="text-align: center">
+  <button (click)="goToPlaylist()" routerLink="/showPlaylist">ShowPlaylist</button>
+  <hr>
+</div>
+
+
+<div class="card-data container">
+<div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
+
+
+  <div class="card border-0 shadow vh-50">
+
+<!--    <a href="https://www.youtube.com/watch?v={{video.id}}" target="_blank"><img [src]="video.snippet.thumbnails.medium.url" class="card-img-top" alt="..."></a>-->
+
+
+
+
+    <a (click)="sendDetail(video)" class="login-trigger" href="#" data-target="#login" data-toggle="modal"><img [src]="video.snippet.thumbnails.medium.url" class="card-img-top" alt="..."></a>
+
+    <div id="login" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <div class="modal-content">
+
+
+          <iframe width="498" height="315" [src]="iframeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="card-body text-center">
+      <h5 class="card-title mb-0"><a href="https://www.youtube.com/watch?v={{video.id}}" target="_blank">{{video.snippet.title}}</a></h5>
+
+
+      <div class="card-text text-black-50">{{video.snippet.description.slice(0, 100)}}</div>
+
+
+
+<!--      <p class="card-text">{{video.snippet.description}}</p>-->
+
+      <nav>
+        <button (click)="addToList(video.id,video.snippet.title,video.snippet.description,video.snippet.thumbnails.medium.url)">Add to Playlist</button>
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+
+</div>

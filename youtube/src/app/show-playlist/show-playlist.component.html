@@ -1,0 +1,49 @@
+<!--<p style="text-align: center">show-playlist works!</p>-->
+
+<!--<div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">-->
+<!--  <p>{{video.videoId}}+"-"{{video.videoTitle}}+"-"+<a href="{{video.videoLink}}">Watch Video</a> </p>-->
+<!--</div>-->
+
+<h2 style="text-align: center">Your Playlist</h2>
+
+<div style="text-align: center">
+  <button (click)="goToVideos()" routerLink="/showVideos" >Go Back</button>
+  <hr>
+</div>
+
+<div class="card-data container">
+  <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-0 shadow vh-50">
+
+<!--      <a href="https://www.youtube.com/watch?v={{video.videoLink}}" target="_blank"><img [src]="video.videoImage" class="card-img-top" alt="..."></a>-->
+
+
+      <a (click)="sendDetails(video.videoLink)" class="login-trigger" href="#" data-target="#login" data-toggle="modal"><img [src]="video.videoImage" class="card-img-top" alt="..."></a>
+
+      <div id="login" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <div class="modal-content">
+
+
+            <iframe width="498" height="315" [src]="iframeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="card-body text-center">
+        <h5 class="card-title mb-0"><a href="https://www.youtube.com/watch?v={{video.videoLink}}" target="_blank">{{video.videoTitle}}</a></h5>
+
+              <div class="card-text text-black-50">{{video.videoDescription.slice(0, 100)}}</div>
+
+<!--        <p class="card-text">{{video.videoDescription}}</p>-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
