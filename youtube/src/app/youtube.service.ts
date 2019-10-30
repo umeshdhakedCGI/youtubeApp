@@ -24,6 +24,26 @@ export class YoutubeService {
     return this.http.get(url).pipe(map((res) => res));
   }
 
+  showSearchResult(input) {
+
+    // tslint:disable-next-line:max-line-length
+    const url = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCzpl8OZGH5RpH9w0eDshS0OIk4Ve2BfCI&part=snippet &type=video,id&maxResults=15&q=' + input;
+
+    return this.http.get(url).pipe(map((res) => res));
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   checkIfExist(datas) {
 
     console.log('inside check');

@@ -44,7 +44,7 @@ export class ShowVideoComponent implements OnInit {
   }
 
   sendDetail(videos) {
-    this.Url = 'https://www.youtube.com/embed/' + videos.id;
+    this.Url = 'http://www.youtube.com/embed/' + videos.id + '?enablejsapi=1&origin=http://example.com';
 
     console.log(this.Url);
 
@@ -52,6 +52,7 @@ export class ShowVideoComponent implements OnInit {
     this.iframeUrl = this.trustedDashboardUrl;
 
   }
+
 
 
 }

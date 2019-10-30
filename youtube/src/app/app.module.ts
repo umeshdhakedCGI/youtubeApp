@@ -10,6 +10,8 @@ import { ShowPlaylistComponent } from './show-playlist/show-playlist.component';
 import { ParentComponent } from './parent/parent.component';
 import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,13 @@ import { PageNotFoundComponentComponent } from './page-not-found-component/page-
     ParentComponent,
     // PageNotFoundComponentComponent
     routingComponents
+    // SearchResultComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [YoutubeService],
   bootstrap: [AppComponent]

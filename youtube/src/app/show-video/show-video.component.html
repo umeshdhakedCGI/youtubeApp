@@ -1,12 +1,5 @@
-
 <!--<p>show-video works!</p>-->
-
-<div style="text-align: center">
-  <button (click)="goToPlaylist()" routerLink="/showPlaylist">ShowPlaylist</button>
-  <hr>
-</div>
-
-
+<h3 style="text-align: center">Trending Videos</h3>
 <div class="card-data container">
 <div *ngFor="let video of videos" class="col-xl-3 col-md-6 mb-4">
 
@@ -22,11 +15,11 @@
 
     <div id="login" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
         <div class="modal-content">
 
-
           <iframe width="498" height="315" [src]="iframeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
         </div>
       </div>
