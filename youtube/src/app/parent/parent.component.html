@@ -1,5 +1,13 @@
 <h1 style="text-align: center">Welcome to {{title}}</h1>
-<button routerLink="/searchResult">Find</button>
+<!--<button routerLink="/searchResult">Find</button>-->
+
 <button routerLink="/showPlaylist">Playlist</button>
 <button routerLink="/showVideos">Home</button>
 <hr>
+
+
+<input #inputSearch type="text" style="float: right">
+<button (click)="search(inputSearch.value)" style="float: right" >Search On YouTube</button>
+<br>
+<hr>
+

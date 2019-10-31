@@ -8,26 +8,26 @@ import {map} from 'rxjs/operators';
 })
 export class YoutubeService {
 
-  apiKey = 'AIzaSyCzpl8OZGH5RpH9w0eDshS0OIk4Ve2BfCI';
+  apiKey = 'AIzaSyAYC1shtpxFvR42pYyAnFkUiESwVpq5hIo';
 
   check = [];
 
   constructor(public http: HttpClient) { }
 
   // tslint:disable-next-line:ban-types
-  getVideosForChanel(channel, maxResults): Observable<Object> {
+  getTrendingVideos(maxResults): Observable<Object> {
     // tslint:disable-next-line:max-line-length
     // const url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&chart=mostPopular &order=date&part=snippet &type=video,id&maxResults=' + maxResults + '&regionCode=IN';
 
     // tslint:disable-next-line:max-line-length
-    const url = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet,statistics&chart=mostPopular&regionCode=IN&maxResults=15&key=AIzaSyCzpl8OZGH5RpH9w0eDshS0OIk4Ve2BfCI&fields=items';
+    const url = 'https://www.googleapis.com/youtube/v3/videos?part=contentDetails,snippet,statistics&chart=mostPopular&regionCode=IN&maxResults=' + maxResults + '&key=' + this.apiKey + '&fields=items';
     return this.http.get(url).pipe(map((res) => res));
   }
 
   showSearchResult(input) {
 
     // tslint:disable-next-line:max-line-length
-    const url = 'https://www.googleapis.com/youtube/v3/search?key=AIzaSyCzpl8OZGH5RpH9w0eDshS0OIk4Ve2BfCI&part=snippet &type=video,id&maxResults=15&q=' + input;
+    const url = 'https://www.googleapis.com/youtube/v3/search?key=' + this.apiKey + '&part=snippet &type=video,id&maxResults=15&q=' + input;
 
     return this.http.get(url).pipe(map((res) => res));
   }
@@ -63,6 +63,7 @@ export class YoutubeService {
     this.checkIfExist(data);
 
     setTimeout(() => {
+      console.log(this.check.length)
       // tslint:disable-next-line:triple-equals
       if (this.check.length == 0) {
         this.http.post('http://localhost:7777/videos/video', data ).subscribe();
@@ -71,7 +72,7 @@ export class YoutubeService {
         alert('already added');
       }
 
-    }, 300);
+    }, 350);
 
 
   }

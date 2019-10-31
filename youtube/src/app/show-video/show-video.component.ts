@@ -18,7 +18,7 @@ export class ShowVideoComponent implements OnInit {
 
   ngOnInit() {
     this.videos = [];
-    this.youtubeService.getVideosForChanel('UCiUxN_V_u-0kthIyLx2rfFg', 12).subscribe((data: any) => {
+    this.youtubeService.getTrendingVideos(12).subscribe((data: any) => {
           this.videos = data.items;
       });
   }

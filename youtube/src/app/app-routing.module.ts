@@ -11,7 +11,9 @@ const routes: Routes = [
   {path: '', redirectTo: '/showVideos', pathMatch: 'full'},
   {path: 'showVideos', component: ShowVideoComponent},
   {path: 'showPlaylist', component: ShowPlaylistComponent},
-  {path: 'searchResult', component: SearchResultComponent},
+
+  {path: 'searchResult', redirectTo: 'searchResult/search', pathMatch: 'full'},
+  {path: 'searchResult/:search', component: SearchResultComponent},
    {path: '**', component: PageNotFoundComponentComponent}
 
 ];
