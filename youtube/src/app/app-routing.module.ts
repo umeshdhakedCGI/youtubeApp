@@ -5,14 +5,27 @@ import {ShowPlaylistComponent} from './show-playlist/show-playlist.component';
 import {ShowVideoComponent} from './show-video/show-video.component';
 import {PageNotFoundComponentComponent} from './page-not-found-component/page-not-found-component.component';
 import {SearchResultComponent} from './search-result/search-result.component';
+import {PlayVideoModelComponent} from './play-video-model/play-video-model.component';
 
 const routes: Routes = [
 
   {path: '', redirectTo: '/showVideos', pathMatch: 'full'},
-  {path: 'showVideos', component: ShowVideoComponent},
-  {path: 'showPlaylist', component: ShowPlaylistComponent},
 
-  {path: 'searchResult', redirectTo: 'searchResult/search', pathMatch: 'full'},
+  {path: 'showVideos', component: ShowVideoComponent,
+  children: [
+    { path: 'playVideo/:videoId', component: PlayVideoModelComponent}
+  ]
+  },
+
+  {path: 'showPlaylist', component: ShowPlaylistComponent,
+    children: [
+      { path: 'playVideo/:videoId', component: PlayVideoModelComponent}
+    ]
+  },
+
+  {path: 'searchResult/', redirectTo: '/showVideos', pathMatch: 'full'},
+  {path: 'searchResult', redirectTo: '/showVideos', pathMatch: 'full'},
+
   {path: 'searchResult/:search', component: SearchResultComponent},
    {path: '**', component: PageNotFoundComponentComponent}
 
@@ -24,4 +37,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [ShowVideoComponent, ShowPlaylistComponent, PageNotFoundComponentComponent, SearchResultComponent];
+export const routingComponents = [ShowVideoComponent, ShowPlaylistComponent, PageNotFoundComponentComponent, SearchResultComponent, PlayVideoModelComponent];

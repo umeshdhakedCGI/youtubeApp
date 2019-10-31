@@ -16,17 +16,19 @@
 
       <a (click)="sendDetails(video.videoLink)" class="login-trigger" href="#" data-target="#login" data-toggle="modal"><img [src]="video.videoImage" class="card-img-top" alt="..."></a>
 
-      <div id="login" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+      <router-outlet></router-outlet>
 
-          <div class="modal-content">
+<!--      <div id="login" class="modal fade" role="dialog">-->
+<!--        <div class="modal-dialog">-->
+
+<!--          <div class="modal-content">-->
 
 
-            <iframe width="498" height="315" [src]="iframeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!--            <iframe width="498" height="315" [src]="iframeUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
 
-          </div>
-        </div>
-      </div>
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
 
 

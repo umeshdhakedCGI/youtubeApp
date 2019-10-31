@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {YoutubeService} from '../youtube.service';
 import {SafeUrl, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-show-video',
@@ -9,7 +10,7 @@ import {SafeUrl, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser'
 })
 export class ShowVideoComponent implements OnInit {
 
-  constructor(private youtubeService: YoutubeService, private sanitizer: DomSanitizer) { }
+  constructor(private youtubeService: YoutubeService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute) { }
 
   videos = [];
   Url = '';
@@ -43,13 +44,18 @@ export class ShowVideoComponent implements OnInit {
     console.log('going to playlist');
   }
 
-  sendDetail(videos) {
-    this.Url = 'http://www.youtube.com/embed/' + videos.id + '?enablejsapi=1&origin=http://example.com';
+  sendDetail(vide) {
+    // this.Url = 'http://www.youtube.com/embed/' + videos.id + '?enablejsapi=1&origin=http://example.com';
+    //
+    // console.log(this.Url);
+    //
+    // this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.Url);
+    // this.iframeUrl = this.trustedDashboardUrl;
 
-    console.log(this.Url);
+    const videoId = vide.id;
 
-    this.trustedDashboardUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.Url);
-    this.iframeUrl = this.trustedDashboardUrl;
+    this.router.navigate(['playVideo', videoId], {relativeTo: this.route});
+
 
   }
 

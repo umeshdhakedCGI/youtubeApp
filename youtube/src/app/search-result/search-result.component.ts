@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {YoutubeService} from '../youtube.service';
 import {SafeUrl, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-search-result',
@@ -18,22 +18,34 @@ export class SearchResultComponent implements OnInit {
   trustedDashboardUrl: SafeUrl;
   Url = '';
 
-  constructor(private youtubeService: YoutubeService,  private sanitizer: DomSanitizer, private route: ActivatedRoute) {
-    route.params.subscribe(value => {
-      const q = this.route.snapshot.paramMap.get('search');
-      this.s = q;
-      console.log('q=' + q);
-
-      this.youtubeService.showSearchResult(q).subscribe((data: any) => {
-          this.videos = data.items;
-          this.bool = true;
-        });
-
-    });
-
-  }
+  constructor(private youtubeService: YoutubeService,  private sanitizer: DomSanitizer, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    console.log('inInit');  // this won't be printed again and again
+
+
+    // route.params.subscribe(value => {
+    // const q = this.route.snapshot.paramMap.get('search');
+
+
+    this.route.paramMap.subscribe((params: ParamMap) => {  // but this will be called again and again as param changes
+     const q = params.get('search');
+
+     this.s = q;
+     console.log('q=' + q);
+
+     this.youtubeService.showSearchResult(q).subscribe((data: any) => {
+        this.videos = data.items;
+        this.bool = true;
+      });
+
+    } );
+
+
+
+    // });
+
+
   }
 
 

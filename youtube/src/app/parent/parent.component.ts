@@ -18,10 +18,11 @@ export class ParentComponent implements OnInit {
   search(search) {
     console.log(search);
     this.router.navigate(['searchResult', search]);
+   // this.router.navigate([search], {relativeTo: this.route});
 
-    setTimeout( () => {
-      console.log('why??');
-    }, 400 );
+    // setTimeout( () => {
+    console.log('why??');
+    // }, 400 );
 
   }
 

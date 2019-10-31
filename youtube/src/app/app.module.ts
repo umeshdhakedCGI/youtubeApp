@@ -12,6 +12,7 @@ import {AppRoutingModule, routingComponents} from './app-routing.module';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { PlayVideoModelComponent } from './play-video-model/play-video-model.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     // ShowPlaylistComponent,
     ParentComponent,
     // PageNotFoundComponentComponent
-    routingComponents
+    routingComponents,
+    PlayVideoModelComponent
     // SearchResultComponent
   ],
   imports: [
